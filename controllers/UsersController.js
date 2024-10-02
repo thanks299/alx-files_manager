@@ -26,7 +26,7 @@ const postNew = async (req, res, next) => {
 	const user = result.ops[0];
 	user.password = undefined;
 	res.status(201).json({
-		user
+		...user
 	});
 
 }
