@@ -9,22 +9,15 @@ class RedisClient {
 
   async createRedis() {
     this.client = createClient();
-    this.isConnected = true;
 
-    this.client.on('error', (err) => {
-      this.isConnected = false;
-      console.error('Redis client error:', err);
-    });
+    this.client.on('error', (err) => console.error('Redis client error:', err));
 
-    this.client.on('ready', () => {
-      this.isConnected = true;
-      console.log('Redis client connected to the server');
-    });
+    this.client.on('ready', () => console.log('Redis client connected to the server'));
   }
 
   // Check if Redis connection is alive
   isAlive() {
-    return this.isConnected;
+    return this.client.connected;
   }
 
   // Get value of a key
