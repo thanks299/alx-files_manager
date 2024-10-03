@@ -45,4 +45,5 @@ const getMe = async (req, res) => {
 
 export default {
 	postNew,
+	getMe
 }
